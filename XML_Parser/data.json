@@ -1,0 +1,590 @@
+{
+    "name": "AdministeredDrugEx",
+    "table": "Administered_DrugsEx",
+    "id": {
+        "name": "Id",
+        "column": "ID",
+        "type": "Int32"
+    },
+    "version": null,
+    "properties": [
+        {
+            "name": "Rpid",
+            "column": "Rpid",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Pnid",
+            "column": "Pnid",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "DrugName",
+            "column": "DrugName",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "FirstLevelName",
+            "column": "FirstLevelName",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "GenericId",
+            "column": "GenericId",
+            "type": "Int32",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "GenericName",
+            "column": "GenericName",
+            "type": "String",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "IsChemo",
+            "column": "IsChemo",
+            "type": "Boolean",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "ScheduleNotes",
+            "column": "Schedule_Notes",
+            "type": "String",
+            "length": "1000",
+            "not-null": null
+        },
+        {
+            "name": "UnitDoseValue",
+            "column": "UnitDose",
+            "type": "double",
+            "length": "50",
+            "not-null": null
+        },
+        {
+            "name": "Unit",
+            "column": "Unit",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "TotalDoseValue",
+            "column": "TotalDose",
+            "type": "double",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "TotalDoseUnit",
+            "column": "TotalDoseUnit",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "ForHydration",
+            "column": "Is_Hydration",
+            "type": "Boolean",
+            "length": null,
+            "not-null": "true"
+        },
+        {
+            "name": "DrugFlagID",
+            "column": "Drug_Flag_Id",
+            "type": "Int16",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsHospital",
+            "column": "IsHospital",
+            "type": "boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HospitalReason",
+            "column": "Hospital_Reason",
+            "type": "String",
+            "length": "512",
+            "not-null": null
+        },
+        {
+            "name": "IsHold",
+            "column": "IsHold",
+            "type": "boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HoldReason",
+            "column": "Hold_Reason",
+            "type": "String",
+            "length": "512",
+            "not-null": null
+        },
+        {
+            "name": "IsCaution",
+            "column": "IsCaution",
+            "type": "boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "CautionReason",
+            "column": "Caution_Reason",
+            "type": "String",
+            "length": "512",
+            "not-null": null
+        },
+        {
+            "name": "PreText",
+            "column": "PreText",
+            "type": "String",
+            "length": "1000",
+            "not-null": null
+        },
+        {
+            "name": "PostText",
+            "column": "PostText",
+            "type": "String",
+            "length": "1000",
+            "not-null": null
+        },
+        {
+            "name": "Lesions",
+            "column": "Lesions",
+            "type": "Int16",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IT_ProcedureType",
+            "column": "IT_ProcedureType",
+            "type": "IT_ProcedureTypeEnum",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "RouteSubType",
+            "column": "RouteSubType_Id",
+            "type": "RouteSubType",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Wastage",
+            "column": "Wastage",
+            "type": "double",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "SolutionRpid",
+            "column": "SolutionRpid",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Solution",
+            "column": "Solution",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "SolutionUnit",
+            "column": "SolutionUnit",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Volume",
+            "column": "Volume",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "InfusionRate",
+            "column": "InfusionRate",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "InfusionTime",
+            "column": "InfusionTime",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "InfusionDuration",
+            "column": "InfusionDuration",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "StartTime",
+            "column": "StartTime",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "StartTimeUTC",
+            "column": "StartTimeUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "EndTime",
+            "column": "EndTime",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "EndTimeUTC",
+            "column": "EndTimeUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "ChemoPlanDrugExID",
+            "column": "ChemoPlanDrugExID",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Provider_Narration",
+            "column": "Provider_Narration",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsKeyService",
+            "column": "IsKeyService",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsMixed",
+            "column": "IsMixed",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "MixingGroupGUID",
+            "column": "MixingGroupGUID",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsConcurrent",
+            "column": "IsConcurrent",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "ESAModifierCode",
+            "column": "ESAModifierCode",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Hemoglobin",
+            "column": "Hemoglobin",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Hematocrit",
+            "column": "Hematocrit",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HemoglobinOrderDate",
+            "column": "HemoglobinOrderDate",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HemoglobinOrderDateUTC",
+            "column": "HemoglobinOrderDateUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HematocritOrderDate",
+            "column": "HematocritOrderDate",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "HematocritOrderDateUTC",
+            "column": "HematocritOrderDateUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "WeightType",
+            "column": "WeightMode",
+            "type": "CureMD.Medical.Interface.Enums.WeightMode, CureMD.Medical.Interface",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "DoseUpdateMode",
+            "column": "DoseUpdateMode",
+            "type": "DoseUpdateMode",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Duration",
+            "column": "Duration",
+            "type": "string",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "DDIReason",
+            "column": "DDIReason",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "InteractionDetail",
+            "column": "InteractionDetail",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsPreMixedDrug",
+            "column": "IsPreMixedDrug",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "Code",
+            "column": "Code",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "BilledUnits",
+            "column": "BilledUnits",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "RxNumberClaimNotes",
+            "column": "RxNumberClaimNotes",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsBillDrug",
+            "column": "IsBillDrug",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsCombineNDC",
+            "column": "IsCombineNDC",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "IsTrialDrug",
+            "column": "IsTrialDrug",
+            "type": "Boolean",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "OPPSModifier",
+            "column": "OPPSModifier",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "OverrideReason",
+            "column": "Override_Reason",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "OverrideBy",
+            "column": "OverrideBy",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "OverrideDateTime",
+            "column": "OverrideDateTime",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "OverrideDateTimeUTC",
+            "column": "OverrideDateTimeUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "PAOverrideReason",
+            "column": "PAOverrideReason",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "PaOverriddenBy",
+            "column": "PaOverriddenBy",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "PaOverriddenDate",
+            "column": "PaOverriddenDate",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "PaOverriddenDateUTC",
+            "column": "PaOverriddenDateUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "SolutionNdc",
+            "column": "SolutionNdc",
+            "type": "String",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "SCrLimitValue",
+            "column": "SCrLimitValue",
+            "type": "double",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "CrClLimitValue",
+            "column": "CrClLimitValue",
+            "type": "double",
+            "length": null,
+            "not-null": "false"
+        },
+        {
+            "name": "UnorderedDrugReason",
+            "column": "UnorderedDrugReason",
+            "type": "String",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "UnorderedDrugReasonDate",
+            "column": "UnorderedDrugReasonDate",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "UnorderedDrugReasonDateUTC",
+            "column": "UnorderedDrugReasonDateUTC",
+            "type": "DateTime",
+            "length": null,
+            "not-null": null
+        },
+        {
+            "name": "UnorderedDrugReasonBy",
+            "column": "UnorderedDrugReasonBy",
+            "type": "Int32",
+            "length": null,
+            "not-null": null
+        }
+    ],
+    "bags": [
+        {
+            "name": "AdministeredMedicationsList",
+            "inverse": "true",
+            "lazy": "extra",
+            "cascade": "all",
+            "order-by": null,
+            "where": null,
+            "key_column": "Administered_DrugsExID",
+            "one_to_many_class": "AdministeredDrugPackagesEx"
+        },
+        {
+            "name": "DrugVerificationHistory",
+            "inverse": "true",
+            "lazy": "extra",
+            "cascade": "all",
+            "order-by": null,
+            "where": null,
+            "key_column": "AdministeredDrugExId",
+            "one_to_many_class": "AdministeredDrugVerificationHistory"
+        },
+        {
+            "name": "AdminDrugTimeEpisodes",
+            "inverse": "true",
+            "lazy": "extra",
+            "cascade": "all",
+            "order-by": null,
+            "where": null,
+            "key_column": "Administered_DrugsExId",
+            "one_to_many_class": "AdministeredDrugTimeEpisode"
+        }
+    ]
+}

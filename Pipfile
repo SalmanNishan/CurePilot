@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+datasets = "*"
+torch = "*"
+transformers = "*"
+pandas = "*"
+peft = "==0.4.0"
+trl = "==0.4.7"
+bitsandbytes = "==0.40.2"
+scipy = "*"
+sentencepiece = "*"
+protobuf = "*"
+tensorboardx = "*"
+ochat = "*"
+langchain = "*"
+langchain-openai = "*"
+tiktoken = "*"
+chromadb = "*"
+accelerate = "==0.21.0"
+sentence-transformers = "*"
+pythonnet = "*"
+pymilvus = "==2.2.5"
+omegaconf = "*"
+tensorflow = "*"
+
+[dev-packages]
+ipykernel = "*"
+
+[requires]
+python_version = "3.10"

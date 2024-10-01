@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/results">Results</a></li>
+        </ul>
+    </nav>
+    <h2>Results</h2>
+    <form id="selectForm" action="/results" method="get">
+        <label for="dataNameSelect">Select Data Name:</label>
+        <select id="dataNameSelect" name="data_name">
+            <option value="">Please Select</option>
+            {% for name in data_names %}
+            <option value="{{ name }}" {% if selected_name == name %} selected {% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">View Results</button>
+    </form>
+
+    {% if document %}
+    <div id="resultsDisplay">
+        <form action="/update_rating" method="post">
+            <input type="hidden" name="data_name" value="{{ selected_name }}">
+            <table id="dataTable_treatment">
+                <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>Output</th>
+                        <th>Ratings</th>
+                        <th>Suggestions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, entry in enumerate(document['entries']) %}
+                    <tr>
+                        <td>{{ entry['input'] }}</td>
+                        <td>{{ entry['output'] }}</td>
+                        <td>
+                            <label>Explanation Depth: 
+                                <input type="number" name="Explanation Depth[{{ index }}]" value="{{ entry['CurePilot_rating'].get('Explanation Depth', 0) }}" min="0" max="5">
+                            </label><br>
+                            <label>Conciseness: 
+                                <input type="number" name="Conciseness[{{ index }}]" value="{{ entry['CurePilot_rating'].get('Conciseness', 0) }}" min="0" max="5">
+                            </label><br>
+                            <label>Tone Appropriateness: 
+                                <input type="number" name="Tone Appropriateness[{{ index }}]" value="{{ entry['CurePilot_rating'].get('Tone Appropriateness', 0) }}" min="0" max="5">
+                            </label><br>
+                            <label>Overall Helpfulness: 
+                                <input type="number" name="Overall Helpfulness[{{ index }}]" value="{{ entry['CurePilot_rating'].get('Overall Helpfulness', 0) }}" min="0" max="5">
+                            </label><br>
+                        </td>
+                        <td>
+                            <textarea name="Suggestions[{{ index }}]" placeholder="Enter suggestion">{{ entry['CurePilot_rating'].get('Suggestions', '') }}</textarea>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Update Ratings</button>
+        </form>
+    </div>
+    {% else %}
+    <p>No data found. Please select a valid data name.</p>
+    {% endif %}
+</body>
+</html>

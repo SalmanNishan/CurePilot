@@ -1,0 +1,4 @@
+name,inverse,lazy,cascade,order-by,where,key_column,one_to_many_class
+AdministeredMedicationsList,true,extra,all,,,Administered_DrugsExID,AdministeredDrugPackagesEx
+DrugVerificationHistory,true,extra,all,,,AdministeredDrugExId,AdministeredDrugVerificationHistory
+AdminDrugTimeEpisodes,true,extra,all,,,Administered_DrugsExId,AdministeredDrugTimeEpisode

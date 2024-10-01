@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="CureMD.Oncology.Api.BusinessEntities" namespace="CureMD.Oncology.Api.BusinessEntities">
+	<class name="AdministeredVitals" table="Administered_Vitals">
+		<id name="Id" column="ID" type="Int32" unsaved-value="0">
+			<generator class="CureMD.Oncology.Api.BusinessEntities.IDGenerator,CureMD.Oncology.Api.BusinessEntities"/>
+		</id>
+
+		<property column="Value" type="String" name="Value" length="20" />
+		<property column="Unit" type="String" name="Unit" length="10" />
+		<property column="Vital_Type_Id" type="VitalType" name="VitalType" />
+		<property column="Date_Time" type="DateTime" name="DateTime" />
+		<property column="Date_TimeUTC" type="DateTime" name="DateTimeUTC" />
+
+		<many-to-one name="Administration" column="Administration_Id" class="ChemoAdministration" />
+		<property name="EnteredBy" column="Entered_By" type="Int32" />
+
+	</class>
+</hibernate-mapping>

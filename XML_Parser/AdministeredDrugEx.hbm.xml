@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="CureMD.Oncology.Api.BusinessEntities" namespace="CureMD.Oncology.Api.BusinessEntities">
+  <class name="AdministeredDrugEx" table="Administered_DrugsEx">
+
+    <id name="Id" column="ID" type="Int32" unsaved-value="0">
+      <generator class="CureMD.Oncology.Api.BusinessEntities.IDGenerator,CureMD.Oncology.Api.BusinessEntities" />
+    </id>
+
+    <property column="Rpid" type="Int32" name="Rpid" />
+    <property column="Pnid" type="Int32" name="Pnid" />
+    <property column="DrugName" type="string" name="DrugName" />
+    <property column="FirstLevelName" type="String" name="FirstLevelName" />
+    <property column="GenericId" type="Int32" name="GenericId" not-null="false" />
+    <property column="GenericName" type="String" name="GenericName" not-null="false" />
+    <property column="IsChemo" type="Boolean" name="IsChemo" not-null="false" />
+
+    <property column="Schedule_Notes" type="String" name="ScheduleNotes" length="1000" />
+    <property column="UnitDose" type="double" name="UnitDoseValue" length="50" />
+    <property name="Unit" column="Unit" type="String" />
+    <property column="TotalDose" type="double" name="TotalDoseValue" />
+    <property column="TotalDoseUnit" type="String" name="TotalDoseUnit" />
+    <property column="Is_Hydration" type="Boolean" name="ForHydration" not-null="true" />
+
+    <many-to-one name="AdministrationId" column="Administration_Id" class="ChemoAdministration" />
+    <property name="DrugFlagID" column="Drug_Flag_Id" type="Int16" />
+    <property name="IsHospital" column="IsHospital" type="boolean" />
+    <property column="Hospital_Reason" type="String" name="HospitalReason" length="512" />
+    <property name="IsHold" column="IsHold" type="boolean" />
+    <property column="Hold_Reason" type="String" name="HoldReason" length="512" />
+    <property name="IsCaution" column="IsCaution" type="boolean" />
+    <property column="Caution_Reason" type="String" name="CautionReason" length="512" />
+
+    <property column="PreText" type="String" name="PreText" length="1000" />
+    <property column="PostText" type="String" name="PostText" length="1000" />
+
+    <component name = "CIVITimeMeasurement" class="CureMD.Medical.Interface.BusinessEntities.TimeMeasurement, CureMD.Medical.Interface">
+      <property column="CIVIDURATION" type="Int32" name="Value" not-null="false" />
+      <property column="CiviUnit" name="Type"/>
+    </component>
+    <property column="Lesions" type="Int16" name="Lesions" />
+    <property column="IT_ProcedureType" name="IT_ProcedureType" type="IT_ProcedureTypeEnum"/>
+    <property column="RouteSubType_Id" name="RouteSubType" type="RouteSubType" />
+
+    <property column="Wastage" type="double" name="Wastage" />
+    <property column="SolutionRpid" type="Int32" name="SolutionRpid" />
+    <property column="Solution" type="string" name="Solution" />
+    <property column="SolutionUnit" type="string" name="SolutionUnit" />
+    <property column="Volume" type="Int32" name="Volume" />
+    <property column="InfusionRate" type="string" name="InfusionRate" />
+    <property column="InfusionTime" type="string" name="InfusionTime" />
+    <property column="InfusionDuration" type="string" name="InfusionDuration" />
+    <property column="StartTime" type="DateTime" name="StartTime" />
+    <property column="StartTimeUTC" type="DateTime" name="StartTimeUTC" />
+    <property column="EndTime" type="DateTime" name="EndTime" />
+    <property column="EndTimeUTC" type="DateTime" name="EndTimeUTC" />
+    <property column="ChemoPlanDrugExID" type="Int32" name="ChemoPlanDrugExID" />
+    <property column="Provider_Narration" type="String" name="Provider_Narration" />
+
+    <bag name="AdministeredMedicationsList" inverse="true" lazy="extra" cascade="all">
+      <key column="Administered_DrugsExID" />
+      <one-to-many class="AdministeredDrugPackagesEx" />
+    </bag>
+
+    <bag name="DrugVerificationHistory" inverse="true" lazy="extra" cascade="all">
+      <key column="AdministeredDrugExId" />
+      <one-to-many class="AdministeredDrugVerificationHistory" />
+    </bag>
+
+    <property column="IsKeyService" type="Boolean" name="IsKeyService" />
+    <property column="IsMixed" type="Boolean" name="IsMixed" />
+    <property column="MixingGroupGUID" type="string" name="MixingGroupGUID" />
+    <property column="IsConcurrent" type="Boolean" name="IsConcurrent" />
+
+    <property name="ESAModifierCode" column="ESAModifierCode" type="string" />
+    <property column="Hemoglobin" type="string" name="Hemoglobin" />
+    <property column="Hematocrit" type="string" name="Hematocrit" />
+
+    <property column="HemoglobinOrderDate" type="DateTime" name="HemoglobinOrderDate" />
+    <property column="HemoglobinOrderDateUTC" type="DateTime" name="HemoglobinOrderDateUTC" />
+    <property column="HematocritOrderDate" type="DateTime" name="HematocritOrderDate" />
+    <property column="HematocritOrderDateUTC" type="DateTime" name="HematocritOrderDateUTC" />
+
+    <property column="WeightMode"  name="WeightType" type="CureMD.Medical.Interface.Enums.WeightMode, CureMD.Medical.Interface"/>
+    <property column="DoseUpdateMode"  name="DoseUpdateMode" type="DoseUpdateMode" />
+
+    <bag name="AdminDrugTimeEpisodes" lazy="extra" inverse="true" cascade="all">
+      <key column="Administered_DrugsExId" />
+      <one-to-many class="AdministeredDrugTimeEpisode" />
+    </bag>
+    <property name="Duration" column="Duration" type="string" />
+    <property column="DDIReason" type="String" name="DDIReason" />
+    <property column="InteractionDetail" type="String" name="InteractionDetail" />
+
+    <property column="IsPreMixedDrug" type="Boolean" name="IsPreMixedDrug" />
+    <property column="Code" type="String" name="Code" />
+    <property column="BilledUnits" type="String" name="BilledUnits" />
+    <property column="RxNumberClaimNotes" type="String" name="RxNumberClaimNotes" />
+    <property column="IsBillDrug" type="Boolean" name="IsBillDrug" />
+     <property column="IsCombineNDC" type="Boolean" name="IsCombineNDC" />
+    <property column="IsTrialDrug" type="Boolean" name="IsTrialDrug" />
+    <property column="OPPSModifier" type="String" name="OPPSModifier" />
+    <property column="Override_Reason" type="String" name="OverrideReason" />
+    <property column="OverrideBy" type="Int32" name="OverrideBy" />
+    <property column="OverrideDateTime" type="DateTime" name="OverrideDateTime" />
+    <property column="OverrideDateTimeUTC" type="DateTime" name="OverrideDateTimeUTC" />
+    <property column="PAOverrideReason" type="String" name="PAOverrideReason" />
+    <property column="PaOverriddenBy" type="Int32" name="PaOverriddenBy" />
+    <property column="PaOverriddenDate" type="DateTime" name="PaOverriddenDate" />
+    <property column="PaOverriddenDateUTC" type="DateTime" name="PaOverriddenDateUTC" />
+    <property column="SolutionNdc" type="String" name="SolutionNdc" not-null="false" />
+    <property column="SCrLimitValue" type="double" name="SCrLimitValue" not-null="false"/>
+    <property column="CrClLimitValue" type="double" name="CrClLimitValue" not-null="false"/>
+    <property column="UnorderedDrugReason" type="String" name="UnorderedDrugReason" />
+    <property column="UnorderedDrugReasonDate" type="DateTime" name="UnorderedDrugReasonDate" />
+    <property column="UnorderedDrugReasonDateUTC" type="DateTime" name="UnorderedDrugReasonDateUTC" />
+    <property column="UnorderedDrugReasonBy" type="Int32" name="UnorderedDrugReasonBy" />
+  </class>
+</hibernate-mapping>

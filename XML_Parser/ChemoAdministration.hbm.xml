@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="CureMD.Oncology.Api.BusinessEntities" namespace="CureMD.Oncology.Api.BusinessEntities">
+  <class name="ChemoAdministration" table="Chemo_Administration">
+
+    <id name="Id" column="ID" type="Int32" unsaved-value="0">
+      <generator class="CureMD.Oncology.Api.BusinessEntities.IDGenerator,CureMD.Oncology.Api.BusinessEntities"/>
+    </id>
+    <version name="Version" column="Version" type="Int16" unsaved-value="0"/>
+
+    <bag name="AdministeredCommentsList" inverse="true" lazy="extra" cascade="all" order-by="Date_TimeUTC desc" where="Is_Active=1" >
+      <key column="Administration_Id" />
+      <one-to-many class="AdminComment" />
+    </bag>    
+
+    <bag name="AdministeredDrugExList" inverse="true" lazy="extra" cascade="all" >
+      <key column="Administration_Id" />
+      <one-to-many class="AdministeredDrugEx" />
+    </bag>
+
+    <bag name="AdministeredIvSitesList" inverse="true" lazy="extra" cascade="all" >
+      <key column="Administration_Id" />
+      <one-to-many class="AdministeredIvSites" />
+    </bag>
+
+    <bag name="OxygenationList" inverse="true" lazy="extra" cascade="all" >
+      <key column="Administration_Id" />
+      <one-to-many class="Oxygenation" />
+    </bag>
+
+    <bag name="AdministeredProceduresList" inverse="false" lazy="extra" cascade="all" where="ComponentType=1 and IsActive=1" >
+      <key column="ComponentId" />
+      <one-to-many class="CPTComponent"/>
+    </bag>
+
+    <bag name="AdministeredVitalsList" inverse="true" lazy="extra" cascade="all" order-by="Date_TimeUTC">
+      <key column="Administration_Id" />
+      <one-to-many class="AdministeredVitals" />
+    </bag>
+    
+    <bag name="PreAdminDrugDoseUpdatesList" inverse="true" lazy="extra" cascade="all">
+      <key column="AdministrationId" />
+      <one-to-many class="PreAdminDrugDoseUpdates" />
+    </bag>
+
+    <property column="Plan_Id" type="Int32" name="PlanId" />
+    <property column="Chemo_Nurse_Id" type="string" name="ChemoNurseId" />
+    <property column="SaveDate" type="DateTime" name="SaveDate" />
+    <property column="SaveDateUTC" type="DateTime" name="SaveDateUTC" />
+    <property column="Cycle" type="String" name="Cycle" length="20" />
+    <property column="Day" type="String" name="Day" length="20" />
+    <property column="Saline_Flush" type="String" name="SalineFlush" length="20" />
+    <property column="Haparine_Flush" type="String" name="HaparineFlush" length="20" />    
+    <property column="Port" type="String" name="Port" />
+    <property column="PortSite" type="String" name="PortSite" />
+    <property column="HuberNeedleGuage" type="String" name="HuberNeedleGuage" />
+    <property column="HuberNeedlelength" type="String" name="HuberNeedlelength" />    
+    <property column="Is_Blood_Return" type="Boolean" name="IsBloodReturn"/>
+    <property column="Comments" type="String" name="Notes" length="8000" />
+    <property column="Location_Id" type="Int16" name="LocationId" />
+    <property column="Is_Signed" type="Boolean" name="IsSigned" not-null="true" />
+    <property column="IsESigned" type="Boolean" name="IsESigned" />
+    <property column="Start_Time" type="DateTime" name="StartTime" />
+    <property column="Start_TimeUTC" type="DateTime" name="StartTimeUTC" />
+    <property column="End_Time" type="DateTime" name="EndTime" />
+    <property column="End_TimeUTC" type="DateTime" name="EndTimeUTC" />
+    <property column="Patient_Id" type="Int32" name="PatientId" not-null="true" />
+    <property column="Ordering_Physician_Id" type="Int16" name="OrderingPhysicianId" />
+    <property column="Logged_In_Physician_Id" type="Int16" name="LoggedInPhysicianId" />
+    <property column="Pharmacist_Id" type="Int16" name="PharmacistId" />
+    <property column="Adminstration_Type_Id" type="Int16" name="AdministrationTypeID" />
+    <property column="Is_Active" type="Boolean" name="IsActive" />
+    <property column="InActivationDate" type="DateTime" name="InActivationDate" />
+    <property column="InActivationDateUTC" type="DateTime" name="InActivationDateUTC" />
+    <property column="InActivatedBy" type="Int16" name="InActivatedBy" />
+    <property column="Week" type="String" name="Week" length="20" />
+    <property column="AdministrationDate" type="DateTime" name="AdministrationDate" />
+    <property column="AdministrationDateUTC" type="DateTime" name="AdministrationDateUTC" />
+    <property column="Claim_Notes" type="String" name="Claim_Notes" length="80" />
+    
+    <property column="Practice_ID" type="Int32" name="PracticeId" />
+    <property column="Unit_System" type="String" name="Unit_System" length="50" />
+    <property column="Haparin_NDC" type="String" name="HaparinNDC"  />
+    <property column="CycleDayLabel" type="String" name="CycleDayLabel"  />
+    <property column="TherapyDetails" type="String" name="TherapyDetails"  />
+
+    <property column="ESuperBillID" type="Int32"  name="ESuperBillId" />
+    <property column="ClinicalDocumentId" type="Int32" name="ClinicalDocumentId" />
+    <property column="ProviderID" type="Int32" name="ProviderId" />
+    <property column="Wastage" type="String" name="Wastage" />
+    <property column="AppointmentID" type="Int32" name="AppointmentId" />
+    <property column="AppointmentActivityId" type="Int32" name="AppointmentActivityId" />
+    <property column="ESuperBill_Detail" type="StringClob" name="ESuperBillDetail" />
+    <property column="AcknowledgedBy" type="Int32" name="AcknowledgedBy" />
+    <property column="OrderStatus" name="OrderStatus" type="OrderStatusEnum" not-null="true"/>
+
+    <property column="TotalDrugCount" type="Int16" name="TotalDrugCount" />
+    <property column="ChemoDrugCount" type="Int16" name="ChemoDrugCount" />
+    <property column="IsArchived" type="Boolean" name="IsArchived"/>
+
+    <property column="CreatedBy" type="Int16" name="CreatedBy" />
+    <property column="CreateDateUTC" type="DateTime" name="CreateDateUTC" />
+    <property column="CreateDate" type="DateTime" name="CreateDate" />
+
+    <property column="SignedBy" type="Int16" name="SignedBy" />
+    <property column="SignDateUTC" type="DateTime" name="SignDateUTC" />
+    <property column="SignDate" type="DateTime" name="SignDate" />
+
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,116 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/results">Results</a></li>
+        </ul>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/submit" method="post">
+        <label for="dataName">Data Name:</label>
+        <input type="text" id="dataName" placeholder="Enter Name" name="data_name" required>
+        <div id="dataFields">
+            <div class="inputWrapper">
+                <textarea name="data_field" placeholder="Enter data" required></textarea>
+                <button type="button" class="removeField" onclick="removeField(this)">Remove</button>
+            </div>
+        </div>
+        <button type="button" onclick="addField()">Add Field</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function addField() {
+            var container = document.getElementById('dataFields');
+            var wrapper = document.createElement("div");
+            wrapper.className = "inputWrapper";
+            var textarea = document.createElement("textarea");
+            textarea.name = "data_field";
+            textarea.placeholder = "Enter data";
+            var removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.className = "removeField";
+            removeButton.innerText = "Remove";
+            removeButton.onclick = function () { removeField(this); };
+            wrapper.appendChild(textarea);
+            wrapper.appendChild(removeButton);
+            container.appendChild(wrapper);
+        }
+
+        function removeField(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/results">Results</a></li>
+        </ul>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/submit" method="post">
+        <label for="dataName">Data Name:</label>
+        <input type="text" id="dataName" placeholder="Enter Name" name="data_name" required>
+        <div id="dataFields">
+            <div class="inputWrapper">
+                <textarea name="data_field" placeholder="Enter data" required></textarea>
+                <button type="button" class="removeField" onclick="removeField(this)">Remove</button>
+            </div>
+        </div>
+        <button type="button" onclick="addField()">Add Field</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function addField() {
+            var container = document.getElementById('dataFields');
+            var wrapper = document.createElement("div");
+            wrapper.className = "inputWrapper";
+            var textarea = document.createElement("textarea");
+            textarea.name = "data_field";
+            textarea.placeholder = "Enter data";
+            var removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.className = "removeField";
+            removeButton.innerText = "Remove";
+            removeButton.onclick = function () { removeField(this); };
+            wrapper.appendChild(textarea);
+            wrapper.appendChild(removeButton);
+            container.appendChild(wrapper);
+        }
+
+        function removeField(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
